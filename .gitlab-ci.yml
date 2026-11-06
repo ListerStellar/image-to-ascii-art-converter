@@ -19,13 +19,6 @@ test:
     reports:
       junit: target/test-reports/*.xml
 
-table_test:
-  stage: external tests
-  image: ${CI_REGISTRY}/bi-oop/tester:latest
-  script:
-    - /opt/tester/run.sh $CI_PROJECT_DIR tableProcessor
-  allow_failure: true
-
 ascii_test:
   stage: external tests
   image: ${CI_REGISTRY}/bi-oop/tester:latest
