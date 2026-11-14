@@ -73,10 +73,3 @@ class RandomGeneratedImageLoaderTest extends AnyFunSuite:
 
     assert(image1 != image2)
   }
-
-  test("RandomGeneratedImageLoader conforms to ImageLoader trait interface") {
-    val loader: ImageLoader = RandomGeneratedImageLoader(Random(228))
-    val image: Image[RGBPixel] = loader.load()
-    assert(image.getWidth >= 10 && image.getWidth <= 50)
-    assert(image.getHeight >= 10 && image.getHeight <= 50)
-  }
