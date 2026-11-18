@@ -5,8 +5,6 @@ import scala.util.Random
 
 class RandomGeneratedImageLoader(private val random: Random)
     extends ImageLoader:
-  require(Option(random).isDefined, "Random instance must not be null")
-
   override def load(): Image[RGBPixel] =
     val width: Int = random.between(10, 51)
     val height: Int = random.between(10, 51)

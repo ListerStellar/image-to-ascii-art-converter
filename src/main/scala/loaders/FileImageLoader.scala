@@ -6,17 +6,13 @@ import java.nio.file.{Files, Path}
 import javax.imageio.ImageIO
 
 trait FileImageLoader(protected val imagePath: Path) extends ImageLoader:
-  require(Option(imagePath).isDefined, "Image path must not be null")
-
   override def load(): Image[RGBPixel] =
     validateFile()
     val bufferedImage: BufferedImage = readBufferedImage()
     convertToImage(bufferedImage)
 
   protected def fileNameLowerCase: Option[String] =
-    Option(imagePath)
-      .flatMap(p => Option(p.getFileName))
-      .map(_.toString.toLowerCase)
+    Option(imagePath.getFileName).map(name => name.toString.toLowerCase)
 
   private def validateFile(): Unit =
     if !Files.exists(imagePath) then
